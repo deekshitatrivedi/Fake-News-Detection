@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fake News Detector</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #1c1f2b;
+                color: #fff;
+                font-family: 'Arial', sans-serif;
+            }
+            .navbar {
+                background-color: #2e3a4e;
+                padding: 15px;
+            }
+            .navbar-brand {
+                font-size: 28px;
+                font-weight: bold;
+                color: #ff3f3f;
+            }
+            .navbar-nav {
+                margin-left: auto;
+            }
+            .nav-link {
+                font-size: 18px;
+                color: #fff;
+                margin-right: 20px;
+            }
+            .nav-link:hover {
+                color: #ff3f3f;
+            }
+            .main-content {
+                text-align: center;
+                margin-top: 50px;
+            }
+            h1 {
+                font-size: 60px;
+                font-weight: bold;
+                color: #ff3f3f;
+            }
+            .search-bar {
+                margin: 30px 0;
+            }
+            .search-bar input {
+                width: 70%;
+                padding: 15px;
+                font-size: 20px;
+                border-radius: 30px;
+                border: none;
+                outline: none;
+            }
+            .search-bar button {
+                padding: 15px 30px;
+                font-size: 20px;
+                color: #fff;
+                background-color: #ff3f3f;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+            }
+            .search-bar button:hover {
+                background-color: #d42d2d;
+            }
+            .feature-buttons {
+                display: flex;
+                justify-content: center;
+                margin-top: 50px;
+            }
+            .feature-buttons button {
+                padding: 15px 30px;
+                margin: 10px;
+                font-size: 20px;
+                color: #fff;
+                background-color: #007bff;
+                border: none;
+                border-radius: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            .feature-buttons button:hover {
+                background-color: #0056b3;
+            }
+            .feedback-section {
+                margin-top: 80px;
+                text-align: center;
+            }
+            .footer {
+                margin-top: 50px;
+                background-color: #2e3a4e;
+                padding: 20px;
+                text-align: center;
+                color: #fff;
+            }
+            .footer p {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#">Fake News Detector</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup">Signup</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Fake News Detector</h1>
+            <div class="search-bar">
+                <form action="/result" method="post">
+                    <input type="text" name="article" placeholder="Check news authenticity here..."required>
+                    <button type="submit">Check</button>
+                </form>
+            </div>
+
+            <!-- Feature Buttons -->
+            <div class="feature-buttons">
+                <button onclick="location.href='https://news.google.com/home?hl=en-IN&gl=IN&ceid=IN:en';">Trending Topics</button>
+            </div>
+
+            <div class="feedback-section">
+                <h3>We Value Your Feedback</h3>
+                <form id="feedbackForm" action="/feedback" method="POST" onsubmit="showPopup(); return false;">
+                    <textarea class="form-control" name="feedback" rows="5" placeholder="Leave your feedback here..." required></textarea>
+                    <button class="btn btn-primary mt-3" type="submit">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Fake News Detector. Developed by MSD.</p>
+        </div>
+
+        <script>
+            // Check the URL for the 'status' query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+    
+            // Show a pop-up based on the status
+            if (status === 'login_success') {
+                alert('Login Successful!');
+            } else if (status === 'login_failed') {
+                alert('Login Failed! Please check your username or password.');
+            } else if (status === 'signup_success') {
+                alert('Account Created Successfully!');
+            }
+           
+            function showPopup() {
+                // Display popup message
+                alert('Thank you for your feedback!');
+                
+                // Delay for a second and redirect to home page
+                setTimeout(function() {
+                    window.location.href = '/';
+                }, 1000);  // 1000 ms = 1 second
+            }
+        
+        </script>
+
+    </body>
+    </html>

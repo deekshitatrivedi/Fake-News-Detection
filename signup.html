@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Fake News Detector</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #1c1f2b;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #2e3a4e;
+            padding: 15px;
+        }
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff3f3f;
+        }
+        .main-content {
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 60px;
+            font-weight: bold;
+            color: #ff3f3f;
+            margin-bottom: 30px; /* Added bottom margin for spacing */
+        }
+        .signup-form {
+            background-color: #2e3a4e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Set maximum width */
+            margin: 0 auto; /* Center the form */
+        }
+        .form-control {
+            margin-bottom: 20px;
+            border-radius: 20px;
+        }
+        .btn-primary {
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+        .footer {
+            text-align: center; /* Center the footer text */
+            margin-top: 50px;
+            padding: 20px 0; /* Add padding for spacing */
+        }
+        .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function togglePassword(elementId) {
+            const passwordField = document.getElementById(elementId);
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+        }
+
+        function validatePasswords() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const submitButton = document.getElementById('signup-button');
+
+            if (password !== confirmPassword) {
+                submitButton.disabled = true;
+            } else {
+                submitButton.disabled = false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Fake News Detector</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Signup</h1>
+        <div class="signup-form">
+            <form action="/signup" method="post" oninput="validatePasswords()">
+                <input type="text" name="FirstName" class="form-control" placeholder="First Name" required>
+                <input type="text" name="LastName" class="form-control" placeholder="Last Name" required>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePassword('password')"><i class="fas fa-eye"></i></span>
+                </div>
+                <div class="password-container">
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                    <span class="toggle-password" onclick="togglePassword('confirm_password')"><i class="fas fa-eye"></i></span>
+                </div>
+                <button type="submit" id="signup-button" class="btn btn-primary btn-block">Signup</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Fake News Detector. Developed by MSD.</p>
+    </div>
+
+</body>
+</html>

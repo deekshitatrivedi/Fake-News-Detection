@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector - Result</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* General body styling */
+        body {
+            background-color: #1c1f2b;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #2e3a4e;
+            padding: 15px;
+        }
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff3f3f;
+        }
+
+        /* Result Box styling */
+        .result-box {
+            margin-top: 50px;
+            padding: 40px;
+            background-color: #2e3a4e;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .result-box h1 {
+            font-size: 40px;
+            color: #ff3f3f;
+            font-weight: bold;
+        }
+        .result {
+            font-size: 28px;
+            font-weight: bold;
+            color: {{ color }};
+            margin-top: 20px;
+        }
+        .btn-primary {
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 18px;
+            background-color: #ff3f3f;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #d42d2d;
+            transform: scale(1.05);
+        }
+
+        /* Feedback Section styling */
+        .feedback-section {
+            margin-top: 50px;
+            padding: 40px;
+            background-color: #343a40;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .feedback-section h3 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff3f3f;
+        }
+        .feedback-section textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 12px;
+            border: none;
+            resize: none;
+            margin-top: 15px;
+            color: #000;
+        }
+        .feedback-section button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 18px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .feedback-section button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Footer styling */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #2e3a4e;
+            text-align: center;
+        }
+        .footer p {
+            margin: 0;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/">Fake News Detector</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="result-box">
+            <h1>Prediction Result</h1>
+            <p class="result">The news article is {{ prediction }}.</p>
+            <a href="/success" class="btn btn-primary">Go Back</a>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+            <h3>We Value Your Feedback</h3>
+            <form id="feedbackForm" action="/feedback" method="POST" onsubmit="showPopup(); return false;">
+                <textarea class="form-control" name="feedback" rows="5" placeholder="Leave your feedback here..." required></textarea>
+                <button class="btn btn-primary mt-3" type="submit">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Fake News Detector. Developed by MSD.</p>
+    </div>
+
+    <!-- JavaScript to handle feedback submission and popup -->
+    <script>
+        function showPopup() {
+            // Display popup message
+            alert('Thank you for your feedback!');
+            
+            // Delay for a second and redirect to home page
+            setTimeout(function() {
+                window.location.href = '/';
+            }, 1000);  // 1000 ms = 1 second
+        }
+    </script>
+
+</body>
+</html>
